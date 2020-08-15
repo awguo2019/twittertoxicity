@@ -3,12 +3,10 @@
 <head>
     <meta charset='utf-8'>
     <meta name="image" property="og:image" content="/static/meta.jpg">
-    <!-- Credit to MonkeyLearn for the base of meta image 
-    https://monkeylearn.com/sentiment-analysis/ -->
-    <meta name="author" content="Raymond Wu">
+    <meta name="author" content="Alan Guo">
     <meta
       name="description"
-      content="Determines if a review is positive or negative"
+      content="Determines what percent of most recent 100 tweets under a specific hashtag are toxic"
     />
     <link rel='stylesheet' href='../static/style.css'>
     <script src='../static/client.js'></script>
@@ -17,9 +15,9 @@
 <body>
     <div>
         <div class='center'>
-            <div class='title'>Positive or Negative Review? 👍👎</div>
+            <div class='title'> Twitter Toxicity Analysis 🐣</div>
             <p>
-                Make up a review that you would put on a review site such as Rotten Tomatos or Amazon.
+                Enter a phrase/hashtag, and we'll search up the 100 most recent tweets, find how many of them are toxic, and output the %toxic below!
             </p>
             <div class='content'>
                 <div class='no-display'>
