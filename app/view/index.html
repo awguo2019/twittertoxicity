@@ -1,49 +1,51 @@
 <html lang='en'>
-<head>
-  <meta charset='utf-8'>
-  <link rel='stylesheet' href='../static/style.css'>
-  <script src='../static/client.js'></script>
-</head>
-<body>
-<div>
-  <div class='center'>
-    <div class='title'>Brown Recluse Identifier 🕷️</div>
-    <p>
-      Not sure if the spider is harmless or a <strong> brown recluse </strong>? Upload an image here and find out!
-    </p>
-    <div class='content'>
-<!--
-      <div class='no-display'>
-        <input id='file-input'
-               class='no-display'
-               type='file'
-               name='file'
-               accept='image/*'
-               onchange='showPicked(this)'>
-      </div>
-      <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
-      <div class='upload-label'>
-        <label id='upload-label'>No file chosen</label>
-      </div>
 
-        <div>
-        <img id='image-picked' class='no-display' alt='Chosen Image' height='200'>
-      </div>
--->
-      <div>
-       <input type="text" id="userinput" name="userinput"><br><br> 
-    
-     </div>
-        
-      
-      <div class='analyze'>
-        <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Analyze</button>
-      </div>
-      <div class='result-label'>
-        <label id='result-label'></label>
-      </div>
+<head>
+    <meta charset='utf-8'>
+    <meta name="image" property="og:image" content="/static/meta.jpg">
+    <!-- Credit to MonkeyLearn for the base of meta image 
+    https://monkeylearn.com/sentiment-analysis/ -->
+    <meta name="author" content="Raymond Wu">
+    <meta
+      name="description"
+      content="Determines if a review is positive or negative"
+    />
+    <link rel='stylesheet' href='../static/style.css'>
+    <script src='../static/client.js'></script>
+</head>
+
+<body>
+    <div>
+        <div class='center'>
+            <div class='title'>Positive or Negative Review? 👍👎</div>
+            <p>
+                Make up a review that you would put on a review site such as Rotten Tomatos or Amazon.
+            </p>
+            <div class='content'>
+                <div class='no-display'>
+                    <!-- <input id='file-input' class='no-display' type='text' name='text' accept='image/*'
+                        onchange='showPicked(this)'> -->
+                </div>
+                <form class='choose-file-button' type='text'>
+                    <input id="reviewText" type="text" name="firstname" value="Type your review:">
+                </form>
+                <!-- <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
+            <div class='upload-label'>
+                <label id='upload-label'>No file chosen</label>
+            </div> 
+            <div>
+                <img id='image-picked' class='no-display' alt='Chosen Image' height='200'>
+            </div> -->
+                <div class='analyze'>
+                    <button id='analyze-button' class='analyze-button' type='button'
+                        onclick='analyze()'>Analyze</button>
+                </div>
+                <div class='result-label'>
+                    <label id='result-label'></label>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 </body>
+
 </html>
