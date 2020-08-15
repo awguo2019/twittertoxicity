@@ -93,7 +93,7 @@ async def analyze(request):
             print(tweet.text);
             preds, test, tensor = learn.predict(tweet.text)
             tsum = tsum + test.numpy();
-   except Exception as error:
+    except Exception as error:
         return render_template("error in twitter data", error=str(error))
         
     
