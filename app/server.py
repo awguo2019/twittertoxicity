@@ -74,10 +74,10 @@ async def analyze(request):
     print("img:", img)
     
     try:
-        accesstoken = '1291150581256597504-ZU1jkJf1ysWub7T3Q3lV3B8DVswQex'
-        accesstoken_secret = 'JTkHZqop5vjoyg6N7WYmV7OLsfoMKl8aS2TEoZr4szzvm'
-        api_key = 'j57Hnlx82JuzmkoWfDx1nytq1'
-        api_key_secret = '8t9saBhTE16jZ7Sol3koEjykyiSnbWPu3QXf45g3wG4zAkx2q0'
+        accesstoken = '1291150581256597504-z0aRzKzhAzMFy5FEeyQaf33VDVYiXZ'
+        accesstoken_secret = 'HbZOF0xo3PKio94f3oBNUTSMU09znv4N2oQUGhove9OS6'
+        api_key = 'XmgCBVVleESTzLBbesBWNFWRr'
+        api_key_secret = 'ikOmADnjBm9W8ujcAMRN5Uzcg3tBwsEtzS2HhtL3NxGiUIEyPn'
         auth = tweepy.OAuthHandler(api_key, api_key_secret)
         auth.set_access_token(accesstoken, accesstoken_secret)
         api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, compression=True)
@@ -86,7 +86,7 @@ async def analyze(request):
 
     
     try:
-        tweets = tweepy.Cursor(api.search, q=img,lang="en").items(500)
+        tweets = tweepy.Cursor(api.search, q=img,lang="en").items(100)
     
         tsum = 0;
         for tweet in tweets:
@@ -97,7 +97,7 @@ async def analyze(request):
         return render_template("error in twitter data", error=str(error))
         
     
-    percent = tsum/5;
+    percent = tsum;
 
     #prediction = learn.predict(img)
     #print("prediction:", prediction)
