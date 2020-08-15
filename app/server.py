@@ -81,15 +81,14 @@ async def analyze(request):
     tweets = tweepy.Cursor(api.search,
                        q=img,
                        lang="en").items(500)
-    tweetlist = [];
-    for tweet in tweets:
-        tweetlist.append(tweet.text);
-    pred_list = TextList(tweetlist)
     
     tsum = 0;
-    for pred in pred_list:
-        preds, test, tensor = learn.predict(pred)
+    for tweet in tweets:
+        print(tweet.text);
+        preds, test, tensor = learn.predict(tweet.text)
         tsum = tsum + test.numpy();
+        
+        
     
     percent = tsum/5;
 
