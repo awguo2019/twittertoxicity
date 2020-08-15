@@ -10,7 +10,7 @@ from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
 export_file_url = 'https://drive.google.com/uc?export=download&id=1btPHzF0-yMvm4UADP5fBP3l7S8raWqZS'
-export_file_name = 'nlp_model.pkl'
+export_file_name = 'export.pkl'
 
 path = Path(__file__).parent
 
