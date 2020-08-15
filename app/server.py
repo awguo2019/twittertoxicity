@@ -51,12 +51,15 @@ loop.close()
 
 @app.route('/')
 async def homepage(request):
+   
+    
     html_file = path / 'view' / 'index.html'
     return HTMLResponse(html_file.open().read())
 
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
+    
     data = await request.json()
     #data = await request.args['data']
     print("data:", data)
@@ -70,24 +73,28 @@ async def analyze(request):
     print("data['textField']", data["textField"])
     print("img:", img)
     
-    accesstoken = '1291150581256597504-ZU1jkJf1ysWub7T3Q3lV3B8DVswQex'
-    accesstoken_secret = 'JTkHZqop5vjoyg6N7WYmV7OLsfoMKl8aS2TEoZr4szzvm'
-    api_key = 'j57Hnlx82JuzmkoWfDx1nytq1'
-    api_key_secret = '8t9saBhTE16jZ7Sol3koEjykyiSnbWPu3QXf45g3wG4zAkx2q0'
-    auth = tweepy.OAuthHandler(api_key, api_key_secret)
-    auth.set_access_token(accesstoken, accesstoken_secret)
-    api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, compression=True)
+    try:
+        accesstoken = '1291150581256597504-ZU1jkJf1ysWub7T3Q3lV3B8DVswQex'
+        accesstoken_secret = 'JTkHZqop5vjoyg6N7WYmV7OLsfoMKl8aS2TEoZr4szzvm'
+        api_key = 'j57Hnlx82JuzmkoWfDx1nytq1'
+        api_key_secret = '8t9saBhTE16jZ7Sol3koEjykyiSnbWPu3QXf45g3wG4zAkx2q0'
+        auth = tweepy.OAuthHandler(api_key, api_key_secret)
+        auth.set_access_token(accesstoken, accesstoken_secret)
+        api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, compression=True)
+    except Exception as error:
+        return render_template("error in twitter api authentication", error=str(error))
+
     
-    tweets = tweepy.Cursor(api.search,
-                       q=img,
-                       lang="en").items(500)
+    try:
+        tweets = tweepy.Cursor(api.search, q=img,lang="en").items(500)
     
-    tsum = 0;
-    for tweet in tweets:
-        print(tweet.text);
-        preds, test, tensor = learn.predict(tweet.text)
-        tsum = tsum + test.numpy();
-        
+        tsum = 0;
+        for tweet in tweets:
+            print(tweet.text);
+            preds, test, tensor = learn.predict(tweet.text)
+            tsum = tsum + test.numpy();
+   except Exception as error:
+        return render_template("error in twitter data", error=str(error))
         
     
     percent = tsum/5;
