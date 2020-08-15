@@ -16,7 +16,7 @@ function showPicker() {
 
 function analyze() {
   var uploadFiles = el("userinput").innerHTML;
-  if (/\S/.test(myString)) alert("Please enter a phrase to search!");
+  if (/\S/.test(uploadFiles)) alert("Please enter a phrase to search!");
 
   el("analyze-button").innerHTML = "Analyzing...";
   var xhr = new XMLHttpRequest();
