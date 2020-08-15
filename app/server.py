@@ -97,7 +97,7 @@ async def analyze(request):
         return render_template("error in twitter data", error=str(error))
         
     
-    percent = tsum.val();
+    percent = tsum.item();
 
     #prediction = learn.predict(img)
     #print("prediction:", prediction)
