@@ -86,16 +86,12 @@ async def analyze(request):
         tweetlist.append(tweet.text);
     pred_list = TextList(tweetlist)
     
-    preds, target = learn.get_preds(ds_type=pred_list, ordered=True) #check this with ds_type !
-    labels = np.argmax(preds, 1)
-    out=labels.numpy()
+    tsum = 0;
+    for pred in pred_list:
+        preds, test, tensor = learn.predict(pred)
+        tsum = tsum + test.numpy();
     
-    output = pd.DataFrame(data = out)
-    xzzz = list(pred_list)
-    df = pd.DataFrame(xzzz)
-    df["toxic"] = output
-    
-    percent = sum(out)/500
+    percent = tsum/5;
 
     #prediction = learn.predict(img)
     #print("prediction:", prediction)
