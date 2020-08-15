@@ -31,16 +31,7 @@ async def download_file(url, dest):
 
 async def setup_learner():
     await download_file(export_file_url, path / export_file_name)
-    try:
-        
-        accesstoken = '1291150581256597504-ZU1jkJf1ysWub7T3Q3lV3B8DVswQex'
-        accesstoken_secret = 'JTkHZqop5vjoyg6N7WYmV7OLsfoMKl8aS2TEoZr4szzvm'
-        api_key = 'j57Hnlx82JuzmkoWfDx1nytq1'
-        api_key_secret = '8t9saBhTE16jZ7Sol3koEjykyiSnbWPu3QXf45g3wG4zAkx2q0'
-        auth = tweepy.OAuthHandler(api_key, api_key_secret)
-        auth.set_access_token(accesstoken, accesstoken_secret)
-        api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, compression=True)
-        
+    try:       
         learn = load_learner(path, export_file_name)
         return learn
     except RuntimeError as e:
@@ -78,6 +69,14 @@ async def analyze(request):
     img = data["textField"]
     print("data['textField']", data["textField"])
     print("img:", img)
+    
+    accesstoken = '1291150581256597504-ZU1jkJf1ysWub7T3Q3lV3B8DVswQex'
+    accesstoken_secret = 'JTkHZqop5vjoyg6N7WYmV7OLsfoMKl8aS2TEoZr4szzvm'
+    api_key = 'j57Hnlx82JuzmkoWfDx1nytq1'
+    api_key_secret = '8t9saBhTE16jZ7Sol3koEjykyiSnbWPu3QXf45g3wG4zAkx2q0'
+    auth = tweepy.OAuthHandler(api_key, api_key_secret)
+    auth.set_access_token(accesstoken, accesstoken_secret)
+    api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, compression=True)
     
     tweets = tweepy.Cursor(api.search,
                        q=img,
