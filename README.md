@@ -1,15 +1,5 @@
-# Starter for deploying [fast.ai](https://www.fast.ai) models on [Render](https://render.com)
-
-This repo can be used as a starting point to deploy [fast.ai](https://github.com/fastai/fastai) models on Render.
-
-The sample app described here is up at https://fastai-v3.onrender.com. Test it out with bear images!
-
-You can test your changes locally by installing Docker and using the following command:
-
-```
-docker build -t fastai-v3 . && docker run --rm -it -p 5000:5000 fastai-v3
-```
-
-The guide for production deployment to Render is at https://course.fast.ai/deployment_render.html.
-
-Please use [Render's fast.ai forum thread](https://forums.fast.ai/t/deployment-platform-render/33953) for questions and support.
+Twitter Toxicity Analyzer for RAISE 2020
+------------------------------------------
+Deployed NLP Model built with Fast.AI + trained with Google/Jigsaw Kaggle training data using Starlette/Docker backend and a basic HTML/CSS/JS frontend. Used Twitter API to fetch tweets, and then used model to process how toxic the tweets are. Enter in a hashtag/phrase, and the website will search through the 100 most recent relevant tweets, and determine how many of them are considered toxic. This can be a useful tool to determine how controversial the discussion is around various topics, ie. the election, maga, blm, etc. Hosted on Render: Check it out here! 
+https://raisetwittertoxicity.onrender.com/
+***it takes a while to get results, so be patient!
