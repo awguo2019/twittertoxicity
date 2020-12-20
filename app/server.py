@@ -9,6 +9,7 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 import tweepy
+import config
 
 export_file_url = 'https://www.googleapis.com/drive/v3/files/1v4rpPSkHkOaYDM1RvExukQMriOqXNbhN?alt=media&key=AIzaSyAZxRmGvTn8CCz084JSla4u5Gei8Af3_VM'
 export_file_name = 'export.pkl'
@@ -74,10 +75,6 @@ async def analyze(request):
     print("img:", img)
     
     try:
-        accesstoken = '1291150581256597504-z0aRzKzhAzMFy5FEeyQaf33VDVYiXZ'
-        accesstoken_secret = 'HbZOF0xo3PKio94f3oBNUTSMU09znv4N2oQUGhove9OS6'
-        api_key = 'XmgCBVVleESTzLBbesBWNFWRr'
-        api_key_secret = 'ikOmADnjBm9W8ujcAMRN5Uzcg3tBwsEtzS2HhtL3NxGiUIEyPn'
         auth = tweepy.OAuthHandler(api_key, api_key_secret)
         auth.set_access_token(accesstoken, accesstoken_secret)
         api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, compression=True)
